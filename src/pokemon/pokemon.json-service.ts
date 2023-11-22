@@ -3,7 +3,7 @@ import {Pokemon} from "./pokemon";
 
 export class PokemonJsonService implements PokemonService{
     getById(id: number): Pokemon | null {
-        throw new Error("Method not implemented.");
+        const urlPokemon = 'https://ex.traction.one/pokedex/pokemon/'+id;
     }
 
     getByName(name: string): Pokemon | null {

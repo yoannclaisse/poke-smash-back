@@ -11,10 +11,15 @@ export class PokemonRouteur{
     private configureRoutes(): void{
         this.routeur.get('/:id',(req, res,next) => {
             try{
-                const result = this.pokemonController.getById(
-                    parseInt(req.params.id),
-                );
-                res.status(200).json(result);
+                if(!Number.isNaN(parseInt(req.params.id))){
+                    let id = parseInt(req.params.id);
+                    const result = this.pokemonController.getById(id);
+                    res.status(200).json(result);
+                }else{
+                    let name = req.params.id;
+                    const result = this.pokemonController.getByName(name);
+                    res.status(200).json(result);
+                }
             }catch (error: unknown){
                 next(error);
             }
