@@ -5,23 +5,23 @@ export class PokemonController {
     constructor(private pokemonService: PokemonService) {
     }
 
-    getById(id:number): Pokemon | null{
-        if(!id){
+    async getById(id: number): Promise<Pokemon | null> {
+        if (!id) {
             throw new Error("Id nécéssaire !")
         }
 
-        if(!Number.isInteger(id)){
+        if (!Number.isInteger(id)) {
             throw new Error('L\'id doit être un nombre !');
         }
 
-        if(id < 0){
+        if (id < 0) {
             throw new Error('L\id ne doit pas être négatif !');
         }
 
         return this.pokemonService.getById(id)
     }
 
-    getByName(name: string): Pokemon | null{
+    async getByName(name: string): Promise<Pokemon | null>{
         if(!name){
             throw new Error('Le nom ne peut pas être vide !');
         }

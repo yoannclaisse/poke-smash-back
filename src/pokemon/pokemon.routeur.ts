@@ -9,18 +9,18 @@ export class PokemonRouteur{
     }
 
     private configureRoutes(): void{
-        this.routeur.get('/:id',(req, res,next) => {
-            try{
-                if(!Number.isNaN(parseInt(req.params.id))){
+        this.routeur.get('/:id',async (req, res, next) => {
+            try {
+                if (!Number.isNaN(parseInt(req.params.id))) {
                     let id = parseInt(req.params.id);
-                    const result = this.pokemonController.getById(id);
+                    const result = await this.pokemonController.getById(id);
                     res.status(200).json(result);
-                }else{
+                } else {
                     let name = req.params.id;
-                    const result = this.pokemonController.getByName(name);
+                    const result = await this.pokemonController.getByName(name);
                     res.status(200).json(result);
                 }
-            }catch (error: unknown){
+            } catch (error: unknown) {
                 next(error);
             }
         });
