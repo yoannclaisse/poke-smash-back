@@ -28,5 +28,22 @@ export class PokemonRouteur{
                 next(error);
             }
         });
+        this.routeur.post('/:id',async (req, res, next) => {
+            try {
+                if (!Number.isNaN(parseInt(req.params.id))) {
+                    let id = parseInt(req.params.id);
+                    let comment = req.body.comment;
+                    const result = await this.pokemonController.postCommentById(id, comment);
+                    res.status(200).json(result);
+                } else {
+                    let name = req.params.id;
+                    let comment = req.body.comment;
+                    const result = await this.pokemonController.postCommentByName(name, comment);
+                    res.status(200).json(result);
+                }
+            } catch (error: unknown) {
+                next(error);
+            }
+        });
     }
 }
