@@ -9,6 +9,10 @@ export class PokemonRouteur{
     }
 
     private configureRoutes(): void{
+        const express = require('express')
+        const cors = require('cors')
+
+        this.routeur.use(cors())
         this.routeur.get('/:id',async (req, res, next) => {
             try {
                 if (!Number.isNaN(parseInt(req.params.id))) {
