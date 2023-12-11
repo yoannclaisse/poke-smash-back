@@ -16,11 +16,9 @@ export class PokemonDetails extends Pokemon {
         public sprite: string,
         public smashs = 0,
         public passs = 0,
-        public comment: string,
-
         // news details pokemeon
         public types: string,
-        
+        public comment = "",
         ) {
 
         super(id, name, sprite, comment, smashs, passs)
