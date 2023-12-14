@@ -1,0 +1,30 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated/client"
+}
+
+datasource efrei {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model pokemon {
+  pokemon_id          Int               @id
+  pokemon_name        String            @efrei.VarChar(45)
+  pokemon_type_one    String            @efrei.VarChar(45)
+  pokemon_type_two    String            @efrei.VarChar(45)
+  pokemon_nbr_smashes Int
+  pokemon_nbr_passes  Int
+  pokemon_comment     pokemon_comment[]
+}
+
+model pokemon_comment {
+  pokemon_comment_id      Int     @id
+  pokemon_comment_author  String  @efrei.VarChar(45)
+  pokemon_comment_date    String  @efrei.VarChar(45)
+  pokemon_comment_content String  @efrei.VarChar(255)
+  pokemon_id              Int
+  pokemon                 pokemon @relation(fields: [pokemon_id], references: [pokemon_id], onDelete: Cascade, map: "fk_pokemon_id")
+
+  @@index([pokemon_id], map: "fk_pokemon_id_idx")
+}
