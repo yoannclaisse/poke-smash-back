@@ -19,12 +19,12 @@ model pokemon {
 }
 
 model pokemon_comment {
-  pokemon_comment_id      Int     @id
-  pokemon_comment_author  String  @efrei.VarChar(45)
-  pokemon_comment_date    String  @efrei.VarChar(45)
-  pokemon_comment_content String  @efrei.VarChar(255)
+  pokemon_comment_id      Int      @id @default(autoincrement())
+  pokemon_comment_author  String   @efrei.VarChar(45)
+  pokemon_comment_date    DateTime @default(now()) @efrei.DateTime(0)
+  pokemon_comment_content String   @efrei.VarChar(255)
   pokemon_id              Int
-  pokemon                 pokemon @relation(fields: [pokemon_id], references: [pokemon_id], onDelete: Cascade, map: "fk_pokemon_id")
+  pokemon                 pokemon  @relation(fields: [pokemon_id], references: [pokemon_id], onDelete: Cascade, map: "fk_pokemon_id")
 
   @@index([pokemon_id], map: "fk_pokemon_id_idx")
 }

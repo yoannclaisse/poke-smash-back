@@ -1990,7 +1990,7 @@ export namespace Prisma {
   export type Pokemon_commentMinAggregateOutputType = {
     pokemon_comment_id: number | null
     pokemon_comment_author: string | null
-    pokemon_comment_date: string | null
+    pokemon_comment_date: Date | null
     pokemon_comment_content: string | null
     pokemon_id: number | null
   }
@@ -1998,7 +1998,7 @@ export namespace Prisma {
   export type Pokemon_commentMaxAggregateOutputType = {
     pokemon_comment_id: number | null
     pokemon_comment_author: string | null
-    pokemon_comment_date: string | null
+    pokemon_comment_date: Date | null
     pokemon_comment_content: string | null
     pokemon_id: number | null
   }
@@ -2137,7 +2137,7 @@ export namespace Prisma {
   export type Pokemon_commentGroupByOutputType = {
     pokemon_comment_id: number
     pokemon_comment_author: string
-    pokemon_comment_date: string
+    pokemon_comment_date: Date
     pokemon_comment_content: string
     pokemon_id: number
     _count: Pokemon_commentCountAggregateOutputType | null
@@ -2191,7 +2191,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       pokemon_comment_id: number
       pokemon_comment_author: string
-      pokemon_comment_date: string
+      pokemon_comment_date: Date
       pokemon_comment_content: string
       pokemon_id: number
     }, ExtArgs["result"]["pokemon_comment"]>
@@ -2591,7 +2591,7 @@ export namespace Prisma {
   interface pokemon_commentFieldRefs {
     readonly pokemon_comment_id: FieldRef<"pokemon_comment", 'Int'>
     readonly pokemon_comment_author: FieldRef<"pokemon_comment", 'String'>
-    readonly pokemon_comment_date: FieldRef<"pokemon_comment", 'String'>
+    readonly pokemon_comment_date: FieldRef<"pokemon_comment", 'DateTime'>
     readonly pokemon_comment_content: FieldRef<"pokemon_comment", 'String'>
     readonly pokemon_id: FieldRef<"pokemon_comment", 'Int'>
   }
@@ -2986,6 +2986,13 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'DateTime'
+   */
+  export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
+    
+
+
+  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -3063,7 +3070,7 @@ export namespace Prisma {
     NOT?: pokemon_commentWhereInput | pokemon_commentWhereInput[]
     pokemon_comment_id?: IntFilter<"pokemon_comment"> | number
     pokemon_comment_author?: StringFilter<"pokemon_comment"> | string
-    pokemon_comment_date?: StringFilter<"pokemon_comment"> | string
+    pokemon_comment_date?: DateTimeFilter<"pokemon_comment"> | Date | string
     pokemon_comment_content?: StringFilter<"pokemon_comment"> | string
     pokemon_id?: IntFilter<"pokemon_comment"> | number
     pokemon?: XOR<PokemonRelationFilter, pokemonWhereInput>
@@ -3084,7 +3091,7 @@ export namespace Prisma {
     OR?: pokemon_commentWhereInput[]
     NOT?: pokemon_commentWhereInput | pokemon_commentWhereInput[]
     pokemon_comment_author?: StringFilter<"pokemon_comment"> | string
-    pokemon_comment_date?: StringFilter<"pokemon_comment"> | string
+    pokemon_comment_date?: DateTimeFilter<"pokemon_comment"> | Date | string
     pokemon_comment_content?: StringFilter<"pokemon_comment"> | string
     pokemon_id?: IntFilter<"pokemon_comment"> | number
     pokemon?: XOR<PokemonRelationFilter, pokemonWhereInput>
@@ -3109,7 +3116,7 @@ export namespace Prisma {
     NOT?: pokemon_commentScalarWhereWithAggregatesInput | pokemon_commentScalarWhereWithAggregatesInput[]
     pokemon_comment_id?: IntWithAggregatesFilter<"pokemon_comment"> | number
     pokemon_comment_author?: StringWithAggregatesFilter<"pokemon_comment"> | string
-    pokemon_comment_date?: StringWithAggregatesFilter<"pokemon_comment"> | string
+    pokemon_comment_date?: DateTimeWithAggregatesFilter<"pokemon_comment"> | Date | string
     pokemon_comment_content?: StringWithAggregatesFilter<"pokemon_comment"> | string
     pokemon_id?: IntWithAggregatesFilter<"pokemon_comment"> | number
   }
@@ -3182,25 +3189,23 @@ export namespace Prisma {
   }
 
   export type pokemon_commentCreateInput = {
-    pokemon_comment_id: number
     pokemon_comment_author: string
-    pokemon_comment_date: string
+    pokemon_comment_date?: Date | string
     pokemon_comment_content: string
     pokemon: pokemonCreateNestedOneWithoutPokemon_commentInput
   }
 
   export type pokemon_commentUncheckedCreateInput = {
-    pokemon_comment_id: number
+    pokemon_comment_id?: number
     pokemon_comment_author: string
-    pokemon_comment_date: string
+    pokemon_comment_date?: Date | string
     pokemon_comment_content: string
     pokemon_id: number
   }
 
   export type pokemon_commentUpdateInput = {
-    pokemon_comment_id?: IntFieldUpdateOperationsInput | number
     pokemon_comment_author?: StringFieldUpdateOperationsInput | string
-    pokemon_comment_date?: StringFieldUpdateOperationsInput | string
+    pokemon_comment_date?: DateTimeFieldUpdateOperationsInput | Date | string
     pokemon_comment_content?: StringFieldUpdateOperationsInput | string
     pokemon?: pokemonUpdateOneRequiredWithoutPokemon_commentNestedInput
   }
@@ -3208,30 +3213,29 @@ export namespace Prisma {
   export type pokemon_commentUncheckedUpdateInput = {
     pokemon_comment_id?: IntFieldUpdateOperationsInput | number
     pokemon_comment_author?: StringFieldUpdateOperationsInput | string
-    pokemon_comment_date?: StringFieldUpdateOperationsInput | string
+    pokemon_comment_date?: DateTimeFieldUpdateOperationsInput | Date | string
     pokemon_comment_content?: StringFieldUpdateOperationsInput | string
     pokemon_id?: IntFieldUpdateOperationsInput | number
   }
 
   export type pokemon_commentCreateManyInput = {
-    pokemon_comment_id: number
+    pokemon_comment_id?: number
     pokemon_comment_author: string
-    pokemon_comment_date: string
+    pokemon_comment_date?: Date | string
     pokemon_comment_content: string
     pokemon_id: number
   }
 
   export type pokemon_commentUpdateManyMutationInput = {
-    pokemon_comment_id?: IntFieldUpdateOperationsInput | number
     pokemon_comment_author?: StringFieldUpdateOperationsInput | string
-    pokemon_comment_date?: StringFieldUpdateOperationsInput | string
+    pokemon_comment_date?: DateTimeFieldUpdateOperationsInput | Date | string
     pokemon_comment_content?: StringFieldUpdateOperationsInput | string
   }
 
   export type pokemon_commentUncheckedUpdateManyInput = {
     pokemon_comment_id?: IntFieldUpdateOperationsInput | number
     pokemon_comment_author?: StringFieldUpdateOperationsInput | string
-    pokemon_comment_date?: StringFieldUpdateOperationsInput | string
+    pokemon_comment_date?: DateTimeFieldUpdateOperationsInput | Date | string
     pokemon_comment_content?: StringFieldUpdateOperationsInput | string
     pokemon_id?: IntFieldUpdateOperationsInput | number
   }
@@ -3343,6 +3347,17 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
+  export type DateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
   export type PokemonRelationFilter = {
     is?: pokemonWhereInput
     isNot?: pokemonWhereInput
@@ -3380,6 +3395,20 @@ export namespace Prisma {
   export type pokemon_commentSumOrderByAggregateInput = {
     pokemon_comment_id?: SortOrder
     pokemon_id?: SortOrder
+  }
+
+  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
   export type pokemon_commentCreateNestedManyWithoutPokemonInput = {
@@ -3440,6 +3469,10 @@ export namespace Prisma {
     create?: XOR<pokemonCreateWithoutPokemon_commentInput, pokemonUncheckedCreateWithoutPokemon_commentInput>
     connectOrCreate?: pokemonCreateOrConnectWithoutPokemon_commentInput
     connect?: pokemonWhereUniqueInput
+  }
+
+  export type DateTimeFieldUpdateOperationsInput = {
+    set?: Date | string
   }
 
   export type pokemonUpdateOneRequiredWithoutPokemon_commentNestedInput = {
@@ -3519,17 +3552,41 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
+  export type NestedDateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
   export type pokemon_commentCreateWithoutPokemonInput = {
-    pokemon_comment_id: number
     pokemon_comment_author: string
-    pokemon_comment_date: string
+    pokemon_comment_date?: Date | string
     pokemon_comment_content: string
   }
 
   export type pokemon_commentUncheckedCreateWithoutPokemonInput = {
-    pokemon_comment_id: number
+    pokemon_comment_id?: number
     pokemon_comment_author: string
-    pokemon_comment_date: string
+    pokemon_comment_date?: Date | string
     pokemon_comment_content: string
   }
 
@@ -3565,7 +3622,7 @@ export namespace Prisma {
     NOT?: pokemon_commentScalarWhereInput | pokemon_commentScalarWhereInput[]
     pokemon_comment_id?: IntFilter<"pokemon_comment"> | number
     pokemon_comment_author?: StringFilter<"pokemon_comment"> | string
-    pokemon_comment_date?: StringFilter<"pokemon_comment"> | string
+    pokemon_comment_date?: DateTimeFilter<"pokemon_comment"> | Date | string
     pokemon_comment_content?: StringFilter<"pokemon_comment"> | string
     pokemon_id?: IntFilter<"pokemon_comment"> | number
   }
@@ -3623,30 +3680,29 @@ export namespace Prisma {
   }
 
   export type pokemon_commentCreateManyPokemonInput = {
-    pokemon_comment_id: number
+    pokemon_comment_id?: number
     pokemon_comment_author: string
-    pokemon_comment_date: string
+    pokemon_comment_date?: Date | string
     pokemon_comment_content: string
   }
 
   export type pokemon_commentUpdateWithoutPokemonInput = {
-    pokemon_comment_id?: IntFieldUpdateOperationsInput | number
     pokemon_comment_author?: StringFieldUpdateOperationsInput | string
-    pokemon_comment_date?: StringFieldUpdateOperationsInput | string
+    pokemon_comment_date?: DateTimeFieldUpdateOperationsInput | Date | string
     pokemon_comment_content?: StringFieldUpdateOperationsInput | string
   }
 
   export type pokemon_commentUncheckedUpdateWithoutPokemonInput = {
     pokemon_comment_id?: IntFieldUpdateOperationsInput | number
     pokemon_comment_author?: StringFieldUpdateOperationsInput | string
-    pokemon_comment_date?: StringFieldUpdateOperationsInput | string
+    pokemon_comment_date?: DateTimeFieldUpdateOperationsInput | Date | string
     pokemon_comment_content?: StringFieldUpdateOperationsInput | string
   }
 
   export type pokemon_commentUncheckedUpdateManyWithoutPokemonInput = {
     pokemon_comment_id?: IntFieldUpdateOperationsInput | number
     pokemon_comment_author?: StringFieldUpdateOperationsInput | string
-    pokemon_comment_date?: StringFieldUpdateOperationsInput | string
+    pokemon_comment_date?: DateTimeFieldUpdateOperationsInput | Date | string
     pokemon_comment_content?: StringFieldUpdateOperationsInput | string
   }
 
