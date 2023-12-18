@@ -3,7 +3,7 @@ export class Pokemon{
         public id: number,
         public name: string,
         public sprite: string,
-        public comment: string,
+        public comments: [],
         public smashs = 0,
         public passs = 0,
         public types = []
@@ -19,10 +19,10 @@ export class PokemonDetails extends Pokemon {
         public passs = 0,
         // news details pokemeon
         public types: [],
-        public comment = "",
+        public comments: [],
         ) {
 
-        super(id, name, sprite, comment, smashs, passs)
+        super(id, name, sprite, comments, smashs, passs)
 
     }
 }
