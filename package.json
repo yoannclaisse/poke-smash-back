@@ -8,7 +8,7 @@
     "dev": "npx ts-node-dev src/app.ts",
     "db": "npx ts-node-dev src/pokemon-db/app.js",
     "format": "prettier --write \"src/**/*.ts\"",
-    "dbInit": "npx prisma introspect npx prisma generate"
+    "dbUpdate": "npx prisma introspect npx prisma generate"
   },
   "keywords": [],
   "author": "",
