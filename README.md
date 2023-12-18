@@ -30,7 +30,7 @@ npm i
 
 ---
 
-##Run des projet
+##Run des projets
 <br/>front :
 
 ```bash
