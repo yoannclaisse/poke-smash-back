@@ -13,8 +13,8 @@ model pokemon {
   pokemon_name        String            @efrei.VarChar(45)
   pokemon_type_one    String            @efrei.VarChar(45)
   pokemon_type_two    String            @efrei.VarChar(45)
-  pokemon_nbr_smashes Int
-  pokemon_nbr_passes  Int
+  pokemon_nbr_smashes Int               @default(0)
+  pokemon_nbr_passes  Int               @default(0)
   pokemon_comment     pokemon_comment[]
 }
 
@@ -24,7 +24,7 @@ model pokemon_comment {
   pokemon_comment_date    DateTime @default(now()) @efrei.DateTime(0)
   pokemon_comment_content String   @efrei.VarChar(255)
   pokemon_id              Int
-  pokemon                 pokemon  @relation(fields: [pokemon_id], references: [pokemon_id], onDelete: Cascade, map: "fk_pokemon_id")
+  pokemon                 pokemon  @relation(fields: [pokemon_id], references: [pokemon_id], onDelete: Cascade, onUpdate: NoAction, map: "fk_pokemon_id")
 
   @@index([pokemon_id], map: "fk_pokemon_id_idx")
 }
