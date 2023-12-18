@@ -19,6 +19,9 @@ export class PokemonRouteur{
 
         this.routeur.use(cors())
 
+        // ---------------------------------APPEL DEPUIS LA DB-------------------------------------------
+
+        // GET pour trouver les pokémon sur la DB
         this.routeur.get('/testdb', async (req, res) => {
             try {
               // Exemple : Récupérer tous les pokemons depuis la base de données
@@ -30,26 +33,10 @@ export class PokemonRouteur{
             }
         });
 
+        // POST pour post un commentaire
         this.routeur.post('/comment', express.json(), async (req, res) => {
             try {
               console.log('request body : ', req.body)
-            //   // Exemple : Récupérer tous les pokemons depuis la base de données
-            //   const pokemon = await prisma.pokemon.findUnique({where : {pokemon_id: req.body.pokemon_id}});
-            //   console.log('pokemon :', pokemon)
-            //   if(pokemon == null) {
-            //     await prisma.pokemon.create({
-            //       data:
-            //       {
-            //         pokemon_id: req.body.pokemon_id,
-            //         pokemon_name: '',
-            //         pokemon_type_one: '',
-            //         pokemon_type_two: '',
-            //         pokemon_nbr_smashes: 0,
-            //         pokemon_nbr_passes: 0
-            //       }
-            //     }
-            //     )
-            //   }
               const comment = await prisma.pokemon_comment.create(
                 {
                   data: req.body
@@ -62,6 +49,39 @@ export class PokemonRouteur{
             }
         });
 
+        // PATCH pour update le PASS d'un pokemon
+        this.routeur.patch('/:id/pass',async (req, res, next) => {
+            const pokemon = await prisma.pokemon.findUnique({where : {pokemon_id: +req.params.id}});
+            console.log('PASS : ', pokemon)
+            if(pokemon != null) {
+                await prisma.pokemon.update({ where : {pokemon_id: +req.params.id},
+                  data:
+                  {
+                    pokemon_nbr_passes: 1 + pokemon.pokemon_nbr_passes
+                  }
+                }
+                )
+              }
+        });
+
+        // PATCH pour update le SMASH d'un pokemon
+        this.routeur.patch('/:id/smash',async (req, res, next) => {
+            const pokemon = await prisma.pokemon.findUnique({where : {pokemon_id: +req.params.id}});
+            console.log('SMASH : ', pokemon)
+            if(pokemon != null) {
+                await prisma.pokemon.update({ where : {pokemon_id: +req.params.id},
+                  data:
+                  {
+                    pokemon_nbr_smashes: 1 + pokemon.pokemon_nbr_smashes
+                  }
+                }
+                )
+              }
+        });
+
+        // ---------------------------------APPEL DEPUIS L'API-------------------------------------------
+
+        // GET sur l'api et trouver l'id d'un  pokemon
         this.routeur.get('/:id',async (req, res, next) => {
             try {
                 let pokemon;
@@ -109,34 +129,7 @@ export class PokemonRouteur{
             }
         });
 
-        this.routeur.patch('/:id/pass',async (req, res, next) => {
-            const pokemon = await prisma.pokemon.findUnique({where : {pokemon_id: +req.params.id}});
-            console.log('PASS : ', pokemon)
-            if(pokemon != null) {
-                await prisma.pokemon.update({ where : {pokemon_id: +req.params.id},
-                  data:
-                  {
-                    pokemon_nbr_passes: 1 + pokemon.pokemon_nbr_passes
-                  }
-                }
-                )
-              }
-        });
-
-        this.routeur.patch('/:id/smash',async (req, res, next) => {
-            const pokemon = await prisma.pokemon.findUnique({where : {pokemon_id: +req.params.id}});
-            console.log('SMASH : ', pokemon)
-            if(pokemon != null) {
-                await prisma.pokemon.update({ where : {pokemon_id: +req.params.id},
-                  data:
-                  {
-                    pokemon_nbr_smashes: 1 + pokemon.pokemon_nbr_smashes
-                  }
-                }
-                )
-              }
-        });
-
+        // POST depuis l'api
         this.routeur.post('/:id',async (req, res, next) => {
             try {
                 if (!Number.isNaN(parseInt(req.params.id))) {
