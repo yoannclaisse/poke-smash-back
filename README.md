@@ -30,6 +30,21 @@ npm i
 
 ---
 
+##Run du projet
+front :
+```bash
+npm run dev
+```
+
+back :
+```bash
+npm run dev
+```
+<br/>
+<br/>
+
+---
+
 ## Annexe de documentation pour prisma (interaction avec la DB)
 **Instalation de prisma :**
 ```bash
