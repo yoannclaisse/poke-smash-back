@@ -6,6 +6,7 @@ export class Pokemon{
         public comment: string,
         public smashs = 0,
         public passs = 0,
+        public types = []
     ) {
     }
 }
@@ -17,7 +18,7 @@ export class PokemonDetails extends Pokemon {
         public smashs = 0,
         public passs = 0,
         // news details pokemeon
-        public types: string,
+        public types: [],
         public comment = "",
         ) {
 
