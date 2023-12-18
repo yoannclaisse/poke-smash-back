@@ -30,8 +30,9 @@ npm i
 
 ---
 
-##Run du projet
-front :
+##Run des projet
+<br/>front :
+
 ```bash
 npm run dev
 ```
