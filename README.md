@@ -2,7 +2,12 @@
 Le projet poke smash est un tinder like basé sur les pokemons.
 <br/>
 <br/>
+Pour resoudre le problème de CORS 
+```bash
+google-chrome --disable-web-security --user-data-dir='~/Bureau/cache-chrome-poke'
+google-chrome --disable-web-security --user-data-dir='pathToDirectory'
 
+```
 ---
 
 ## Clone des projets :

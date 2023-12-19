@@ -8,7 +8,7 @@ export class PokemonJsonService implements PokemonService{
         console.log(response)
         if(response.status == 200) {
             const json = await response.json();
-            return new PokemonDetails(id, json[0].name, json[0].sprite,json[0].smashes, json[0].passs, json[0].types);
+            return new PokemonDetails(id, json[0].name, json[0].sprite,json[0].smashes, json[0].passs, json[0].types, []);
         }
         else{
             return null;
@@ -20,7 +20,7 @@ export class PokemonJsonService implements PokemonService{
         const response = await fetch(urlPokemon);
         if(response.status == 200) {
             const json = await response.json();
-            return new PokemonDetails(json[0].number, name, json[0].sprite, json[0].smashes, json[0].passs, json[0].types);
+            return new PokemonDetails(json[0].number, name, json[0].sprite, json[0].smashes, json[0].passs, json[0].types, []);
         }
         else{
             return null;
@@ -34,7 +34,7 @@ export class PokemonJsonService implements PokemonService{
         if(response.status == 200) {
             const json = await response.json();
             // ajouter ecriture dans la bdd
-            return new PokemonDetails(id, json[0].name, json[0].sprite,json[0].smashes, json[0].passs, json[0].types, comment);
+            return new PokemonDetails(id, json[0].name, json[0].sprite,json[0].smashes, json[0].passs, json[0].types, json[0].comments);
         }
         else{
             return null;
@@ -47,7 +47,7 @@ export class PokemonJsonService implements PokemonService{
         if(response.status == 200) {
             const json = await response.json();
             // ajouter ecriture dans la bdd
-            return new PokemonDetails(json[0].number, name, json[0].sprite, json[0].smashes, json[0].passs, json[0].types, comment);
+            return new PokemonDetails(json[0].number, name, json[0].sprite, json[0].smashes, json[0].passs, json[0].types, json[0].comments);
         }
         else{
             return null;
