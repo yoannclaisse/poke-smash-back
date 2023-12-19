@@ -3126,8 +3126,8 @@ export namespace Prisma {
     pokemon_name: string
     pokemon_type_one: string
     pokemon_type_two: string
-    pokemon_nbr_smashes: number
-    pokemon_nbr_passes: number
+    pokemon_nbr_smashes?: number
+    pokemon_nbr_passes?: number
     pokemon_comment?: pokemon_commentCreateNestedManyWithoutPokemonInput
   }
 
@@ -3136,8 +3136,8 @@ export namespace Prisma {
     pokemon_name: string
     pokemon_type_one: string
     pokemon_type_two: string
-    pokemon_nbr_smashes: number
-    pokemon_nbr_passes: number
+    pokemon_nbr_smashes?: number
+    pokemon_nbr_passes?: number
     pokemon_comment?: pokemon_commentUncheckedCreateNestedManyWithoutPokemonInput
   }
 
@@ -3166,8 +3166,8 @@ export namespace Prisma {
     pokemon_name: string
     pokemon_type_one: string
     pokemon_type_two: string
-    pokemon_nbr_smashes: number
-    pokemon_nbr_passes: number
+    pokemon_nbr_smashes?: number
+    pokemon_nbr_passes?: number
   }
 
   export type pokemonUpdateManyMutationInput = {
@@ -3632,8 +3632,8 @@ export namespace Prisma {
     pokemon_name: string
     pokemon_type_one: string
     pokemon_type_two: string
-    pokemon_nbr_smashes: number
-    pokemon_nbr_passes: number
+    pokemon_nbr_smashes?: number
+    pokemon_nbr_passes?: number
   }
 
   export type pokemonUncheckedCreateWithoutPokemon_commentInput = {
@@ -3641,8 +3641,8 @@ export namespace Prisma {
     pokemon_name: string
     pokemon_type_one: string
     pokemon_type_two: string
-    pokemon_nbr_smashes: number
-    pokemon_nbr_passes: number
+    pokemon_nbr_smashes?: number
+    pokemon_nbr_passes?: number
   }
 
   export type pokemonCreateOrConnectWithoutPokemon_commentInput = {

@@ -8,7 +8,8 @@
     "dev": "npx ts-node-dev src/app.ts",
     "db": "npx ts-node-dev src/pokemon-db/app.js",
     "format": "prettier --write \"src/**/*.ts\"",
-    "dbUpdate": "npx prisma introspect npx prisma generate"
+    "dbUpdate": "npx prisma db pull && npx prisma generate",
+    "dockerDb": "docker compose up --build"
   },
   "keywords": [],
   "author": "",
