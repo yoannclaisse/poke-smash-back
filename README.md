@@ -54,16 +54,17 @@ MYSQL_PASSWORD=password
 
 DATABASE_URL="mysql://ylecocq:password@localhost:3307/efrei?schema=public"
 ```
-- Initialise la DB par rapport au schéma Prisma
-
-```bash
-npm run dbUpdate
-```
-<br/>
 
 - Initialise la base de donnée avec docker et install "adminer" (GUI pour la DB accessible sur le port 8080)
 ```bash
 npm run dockerDb
+```
+<br/>
+
+- Initialise la DB par rapport au schéma Prisma
+
+```bash
+npm run dbUpdate
 ```
 <br/>
 
