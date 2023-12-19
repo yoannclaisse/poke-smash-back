@@ -52,7 +52,7 @@ MYSQL_PASSWORD=password
 # Prisma supports the native connection string format for PostgreSQL, MySQL, SQLite, SQL Server, MongoDB and CockroachDB.
 # See the documentation for all the connection string options: https://pris.ly/d/connection-strings
 
-DATABASE_URL="mysql://MYSQL_USER:MYSQL_PASSWORD@localhost:3307/efrei?schema=public"
+DATABASE_URL="mysql://ylecocq:password@localhost:3307/efrei?schema=public"
 ```
 - Initialise la DB par rapport au schéma Prisma
 
