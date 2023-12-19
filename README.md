@@ -72,7 +72,7 @@ npm run dbUpdate
 ```bash
 npm run dev
 ```
-<br/>**BACK :**<br/>
+<br/>**FRONT :**<br/>
 Run le server sur le port 5173
 ```bash
 npm run dev
