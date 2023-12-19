@@ -61,7 +61,7 @@ npm run dbUpdate
 ```
 <br/>
 
-- Initialise la base de donnée avec docker
+- Initialise la base de donnée avec docker et install "adminer" (GUI pour la DB accessible sur le port 8080)
 ```bash
 npm run dockerDb
 ```
