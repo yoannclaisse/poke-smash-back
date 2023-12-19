@@ -4,7 +4,6 @@ Le projet poke smash est un tinder like basé sur les pokemons.
 <br/>
 Pour resoudre le problème de CORS 
 ```bash
-google-chrome --disable-web-security --user-data-dir='~/Bureau/cache-chrome-poke'
 google-chrome --disable-web-security --user-data-dir='pathToDirectory'
 
 ```
@@ -26,7 +25,7 @@ git clone https://github.com/yoannclaisse/poke-smash-back.git
 ---
 
 ##Instalation des dépendances avec npm
-Pour que toutes les dépendances soient instalées (il faut le faire pour le front et le back) :
+Pour que toutes les dépendances soient instalées (il faut le faire pour le **FRONT et le BACK**) :
 ```bash
 npm i
 ```
@@ -36,73 +35,48 @@ npm i
 ---
 
 ##Run des projets
-<br/>front :
+<br/>**BACK :**<br/>
+Pour le back il faut créer un fichier .env avec ces info:
+```.env
+PORT=9999
 
-```bash
-npm run dev
+MYSQL_ROOT_PASSWORD=root
+MYSQL_DATABASE=efrei
+MYSQL_USER=ylecocq
+MYSQL_PASSWORD=password
+
+# This was inserted by `prisma init`:
+# Environment variables declared in this file are automatically made available to Prisma.
+# See the documentation for more detail: https://pris.ly/d/prisma-schema#accessing-environment-variables-from-the-schema
+
+# Prisma supports the native connection string format for PostgreSQL, MySQL, SQLite, SQL Server, MongoDB and CockroachDB.
+# See the documentation for all the connection string options: https://pris.ly/d/connection-strings
+
+DATABASE_URL="mysql://MYSQL_USER:MYSQL_PASSWORD@localhost:3307/efrei?schema=public"
 ```
+- Initialise la DB par rapport au schéma Prisma
 
-back :
-```bash
-npm run dev
-```
-<br/>
-<br/>
-
----
-
-## Annexe de documentation pour prisma (interaction avec la DB)
-**Instalation de prisma :**
-```bash
-npm instal prisma mysql2
-```
-<br/>
-<br/>
-
----
-
-
-**Initialiser prisma**
-```bash
-npx prisma init
-```
-génère un fichier schema.prisma et ajoute DATABASE_URL dans le .env (DATABASE_URL="mysql://johndoe:randompassword@localhost:5432/mydb?schema=public") à modifier.
-<br/>
-<br/>
-
----
-
-
-**Créer un modèle pour la DB**
-```bash
-npx prisma introspect
-```
-Cela interrogera votre base de données et mettra à jour automatiquement le modèle Prisma dans le fichier schema.prisma en fonction de la structure de la base de données.
-<br/>
-<br/>
-
----
-
-**Générer le client Prisma**
-```bash
-npx prisma generate
-```
-Cela générera les fichiers nécessaires dans le répertoire ./generated/client.
-<br/>
-<br/>
-
----
-
-**Note pour ce projet avec Prisma et NPM**
-Pour ce projet, s'il y a des modification faite sur la structure de la base données, il faut que prisma puisse le mettre à jour, il faut faire : 
-```bash
-npx prisma introspect
-```
-et 
-```bash
-npx prisma générate
-```
-Dans ce projet si une modification de la structure de la DB a été faite, il faut juste faire : 
 ```bash
 npm run dbUpdate
 ```
+<br/>
+
+- Initialise la base de donnée avec docker
+```bash
+npm run dockerDb
+```
+<br/>
+
+- Run le server sur le port 9999
+```bash
+npm run dev
+```
+<br/>**BACK :**<br/>
+Run le server sur le port 5173
+```bash
+npm run dev
+```
+<br/>
+<br/>
+
+---
